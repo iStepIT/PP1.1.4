@@ -25,19 +25,3 @@ public class Util {
     }
 }
 
-/*   public static Connection getConnection() throws SQLException {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println("Connecting to database...");
-            Connection connection = DriverManager.getConnection(
-                    URL, USERNAME, PASS);
-            if (connection != null) {
-                System.out.println("Database connection established!");
-            } else {
-                throw new SQLException("Error connecting to database");
-            }
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-*/
