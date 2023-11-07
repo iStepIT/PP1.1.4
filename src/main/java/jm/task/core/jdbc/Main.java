@@ -1,25 +1,31 @@
 package jm.task.core.jdbc;
+
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
-import jm.task.core.jdbc.util.Util;
+
+import static java.lang.System.out;
+import static jm.task.core.jdbc.util.Util.closeConnection;
+
 
 public class Main {
-    private final static UserService userService = new UserServiceImpl();
-    public static void main(String[] args) {
+    private final static UserService userService = new UserServiceImpl ();
 
-        userService.createUsersTable();
+    public static void main (String[] args) {
 
-        userService.saveUser("Илья", "Степанов", (byte) 37);
-        userService.saveUser("Вова", "Сидоров", (byte) 74);
-        userService.saveUser("Иван", "Иванов", (byte) 59);
+        userService.createUsersTable ();
 
+        userService.saveUser ("Илья", "Степанов", (byte) 37);
+        userService.saveUser ("Вова", "Сидоров", (byte) 74);
+        userService.saveUser ("Иван", "Иванов", (byte) 59);
+        userService.saveUser ("Саша", "Петров", (byte) 33);
 
-        userService.removeUserById(2);
+        userService.getAllUsers ().forEach (out::println);
 
-        userService.getAllUsers();
+        userService.cleanUsersTable ();
 
-        userService.cleanUsersTable();
+        userService.dropUsersTable ();
 
-      //  userService.dropUsersTable();
+        closeConnection();
+
     }
 }
